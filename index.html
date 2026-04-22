@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biopharma Services | Biodesix</title>
+<link rel="stylesheet" href="https://www.biodesix.com/_next/static/css/660a701a4095e84a.css">
+<link rel="stylesheet" href="https://www.biodesix.com/_next/static/css/e499f01db67b8edd.css">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --blue: #004C97;
+  --blue-dark: #032B5C;
+  --blue-mid: #274868;
+  --green: #009A44;
+  --green-dark: #007A36;
+  --teal: #03494B;
+  --light-blue: #A1BCD9;
+  --white: #ffffff;
+  --off-white: #F5F7FA;
+  --gray-light: #E4E9EF;
+  --gray-text: #5A6472;
+  --body-text: #1A2332;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: var(--body-text);
+  background: var(--white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ─── NAV (unchanged from v3) ─── */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: #fff;
+  border-bottom: 1px solid var(--gray-light);
+  height: 68px;
+  display: flex;
+  align-items: center;
+  padding: 0 50px;
+  gap: 32px;
+}
+.nav-logo img { height: 32px; display: block; }
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+  margin-left: 8px;
+  flex: 1;
+}
+.nav-links a {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--blue-mid);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.15s, color 0.15s;
+}
+.nav-links a:hover,
+.nav-links a.active { color: var(--blue); border-bottom-color: var(--green); }
+.nav-contact {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--blue-mid);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.15s, color 0.15s;
+}
+.nav-contact:hover { color: var(--blue); border-bottom-color: var(--green); }
+.nav-hamburger { display: none; cursor: pointer; padding: 4px; margin-left: auto; }
+.nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--blue); margin: 5px 0; border-radius: 2px; }
+
+/* ─── HERO (v3 layout — wrapping fixed) ─── */
+.hero {
+  display: grid;
+  grid-template-columns: 58% 42%;
+  height: 390px;
+  max-height: 390px;
+  width: 100%;
+}
+.hero-image {
+  position: relative;
+  overflow: visible;
+  height: 390px;
+}
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.hero-mask {
+  position: absolute;
+  top: 0;
+  right: -1px;
+  height: 100%;
+  width: auto;
+  display: block;
+  pointer-events: none;
+  z-index: 2;
+}
+/* FIX: reduced padding, smaller h1, overflow guards */
+.hero-copy {
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 32px 32px 32px 40px;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.hero-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 2px;
+  background: var(--green);
+  flex-shrink: 0;
+}
+.hero h1 {
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--blue);
+  line-height: 1.25;
+  margin-bottom: 14px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  min-width: 0;
+}
+.hero h1 strong { font-weight: 700; display: block; }
+.hero-sub {
+  font-size: 14px;
+  color: var(--gray-text);
+  font-weight: 400;
+  line-height: 1.65;
+  margin-bottom: 24px;
+  overflow-wrap: break-word;
+  min-width: 0;
+}
+.btn-green {
+  display: inline-block;
+  background: var(--green);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 13px 28px;
+  border-radius: 3px;
+  transition: background 0.15s;
+  align-self: flex-start;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.btn-green:hover { background: var(--green-dark); }
+
+/* ─── SHARED ─── */
+.section-wrap {
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 0 50px;
+}
+.section-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-eyebrow::after {
+  content: '';
+  display: inline-block;
+  height: 1px;
+  width: 28px;
+  background: var(--green);
+}
+
+/* ─── PLATFORM SNAPSHOT ─── */
+.platform { padding: 72px 0 60px; background: var(--off-white); }
+.platform-header { margin-bottom: 32px; }
+.platform-header h2 {
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--blue);
+  margin-top: 8px;
+  line-height: 1.25;
+}
+.platform-header h2 strong { font-weight: 700; }
+.platform-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 16px;
+  align-items: start;
+}
+.platform-card {
+  background: var(--white);
+  border: 1px solid var(--gray-light);
+  border-radius: 6px;
+  padding: 26px 22px 22px;
+}
+.platform-card.featured {
+  border-color: var(--blue);
+  border-width: 2px;
+}
+.platform-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blue);
+  background: rgba(0,76,151,0.07);
+  padding: 3px 10px;
+  border-radius: 3px;
+  margin-bottom: 12px;
+}
+.platform-card h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--blue);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.platform-card .card-sub {
+  font-size: 13px;
+  color: var(--gray-text);
+  line-height: 1.65;
+  margin-bottom: 14px;
+}
+.spec-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.spec-badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border-radius: 3px;
+  border: 1px solid;
+}
+.spec-badge.primary {
+  color: var(--green-dark);
+  background: rgba(0,154,68,0.07);
+  border-color: rgba(0,154,68,0.3);
+}
+.spec-badge.neutral {
+  color: var(--blue-mid);
+  background: var(--off-white);
+  border-color: var(--gray-light);
+}
+.spec-list {
+  list-style: none;
+  border-top: 1px solid var(--gray-light);
+}
+.spec-list li {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--body-text);
+  padding: 7px 0 7px 16px;
+  border-bottom: 1px solid var(--gray-light);
+  position: relative;
+  line-height: 1.4;
+}
+.spec-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+}
+.card-link {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--blue);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 14px;
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--gray-light);
+  transition: border-color 0.15s;
+}
+.card-link:hover { border-color: var(--blue); }
+
+/* ─── CREDENTIALS BAR ─── */
+.creds-bar { background: var(--blue-dark); padding: 16px 0; }
+.creds-bar-inner {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.creds-bar-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-right: 4px;
+  flex-shrink: 0;
+}
+.creds-bar .cert {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.82);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 11px;
+  border-radius: 3px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.creds-bar-note {
+  margin-left: auto;
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  font-style: italic;
+  flex-shrink: 0;
+}
+
+/* ─── ddPCR DEEP DIVE ─── */
+.ddpcr { padding: 80px 0; background: var(--white); }
+.ddpcr-header { margin-bottom: 40px; }
+.ddpcr-header h2 {
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--blue);
+  margin-top: 8px;
+  line-height: 1.25;
+}
+.ddpcr-header h2 strong { font-weight: 700; }
+.ddpcr-header p {
+  font-size: 15px;
+  color: var(--gray-text);
+  line-height: 1.75;
+  margin-top: 14px;
+  max-width: 700px;
+}
+.ddpcr-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--gray-light);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 56px;
+}
+.ddpcr-stat { background: var(--white); padding: 28px 32px; }
+.ddpcr-stat-num {
+  font-size: 44px;
+  font-weight: 700;
+  color: var(--blue);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.ddpcr-stat-num .denom {
+  font-size: 22px;
+  font-weight: 300;
+  letter-spacing: 0;
+}
+.ddpcr-stat-num .unit {
+  font-size: 24px;
+  font-weight: 300;
+  letter-spacing: 0;
+}
+.ddpcr-stat-label {
+  font-size: 13px;
+  color: var(--gray-text);
+  margin-top: 8px;
+  line-height: 1.5;
+}
+.ddpcr-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: start;
+}
+.ddpcr-col h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--blue);
+  margin-bottom: 4px;
+}
+.ddpcr-rule {
+  width: 28px;
+  height: 2px;
+  background: var(--green);
+  margin: 12px 0 16px;
+}
+.ddpcr-col p {
+  font-size: 14px;
+  color: var(--gray-text);
+  line-height: 1.75;
+  margin-bottom: 12px;
+}
+.subsection-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray-text);
+  margin: 20px 0 8px;
+}
+.sample-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+.sample-chip {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--blue-mid);
+  background: var(--off-white);
+  border: 1px solid var(--gray-light);
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+.use-list { list-style: none; }
+.use-list li {
+  font-size: 13px;
+  color: var(--gray-text);
+  padding: 7px 0 7px 16px;
+  position: relative;
+  border-bottom: 1px solid var(--gray-light);
+  line-height: 1.5;
+}
+.use-list li:first-child { border-top: 1px solid var(--gray-light); }
+.use-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--green);
+}
+.tat-note {
+  background: var(--off-white);
+  border-left: 3px solid var(--blue);
+  padding: 14px 18px;
+  border-radius: 0 4px 4px 0;
+  margin-top: 24px;
+}
+.tat-note p {
+  font-size: 13px;
+  color: var(--gray-text);
+  line-height: 1.6;
+  margin: 0;
+}
+.tat-note strong { color: var(--body-text); }
+.citation {
+  font-size: 11px;
+  color: var(--gray-text);
+  line-height: 1.55;
+  margin-top: 10px;
+}
+.citation a { color: var(--blue); text-decoration: underline; }
+.panel-img-wrap {
+  cursor: pointer;
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  display: block;
+  margin-bottom: 4px;
+}
+.panel-img-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+  transition: opacity 0.2s;
+}
+.panel-img-wrap:hover img { opacity: 0.88; }
+.panel-img-zoom {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+/* ─── NGS ─── */
+.ngs { padding: 72px 0; background: var(--off-white); }
+.ngs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+.ngs-left h2 {
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--blue);
+  margin-top: 8px;
+  line-height: 1.25;
+}
+.ngs-left h2 strong { font-weight: 700; }
+.ngs-left p {
+  font-size: 14px;
+  color: var(--gray-text);
+  line-height: 1.75;
+  margin-top: 14px;
+}
+.partner-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue-mid);
+  background: var(--white);
+  border: 1px solid var(--gray-light);
+  padding: 5px 14px;
+  border-radius: 3px;
+  margin-bottom: 14px;
+}
+.partner-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--blue);
+  flex-shrink: 0;
+}
+
+/* ─── PROTEOMICS ─── */
+.proto { padding: 72px 0; background: var(--white); }
+.proto-header { margin-bottom: 36px; max-width: 660px; }
+.proto-header h2 {
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--blue);
+  margin-top: 8px;
+  line-height: 1.25;
+}
+.proto-header h2 strong { font-weight: 700; }
+.proto-header p {
+  font-size: 14px;
+  color: var(--gray-text);
+  line-height: 1.75;
+  margin-top: 14px;
+}
+.proto-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: var(--gray-light);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.proto-card {
+  background: var(--white);
+  padding: 32px 28px;
+}
+.proto-card:first-child { border-radius: 6px 0 0 6px; }
+.proto-card:last-child { border-radius: 0 6px 6px 0; }
+.proto-card h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--blue);
+  margin-bottom: 4px;
+}
+.proto-rule {
+  width: 24px;
+  height: 2px;
+  background: var(--green);
+  margin: 12px 0 14px;
+}
+.proto-card p {
+  font-size: 14px;
+  color: var(--gray-text);
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+.proto-link {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--blue);
+  text-decoration: underline;
+  margin-top: 8px;
+}
+
+/* ─── CTA ─── */
+.cta { background: var(--blue); padding: 80px 0; }
+.cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+.cta-text .section-eyebrow { color: rgba(255,255,255,0.5); }
+.cta-text .section-eyebrow::after { background: rgba(255,255,255,0.3); }
+.cta-text h2 {
+  font-size: 32px;
+  font-weight: 300;
+  color: #fff;
+  line-height: 1.2;
+  max-width: 480px;
+  margin-top: 8px;
+}
+.cta-text h2 strong { font-weight: 700; }
+.cta-text p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.65);
+  margin-top: 12px;
+  max-width: 440px;
+  line-height: 1.65;
+}
+.cta-action { flex-shrink: 0; }
+.btn-white {
+  display: inline-block;
+  background: #fff;
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 15px 34px;
+  border-radius: 3px;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+.btn-white:hover { background: var(--off-white); }
+
+/* ─── FOOTNOTES ─── */
+.footnotes-bar {
+  background: #F0F2F5;
+  border-top: 1px solid var(--gray-light);
+  padding: 20px 0;
+}
+.footnotes-bar p {
+  font-size: 11px;
+  color: var(--gray-text);
+  line-height: 1.6;
+  margin-bottom: 4px;
+}
+.footnotes-bar p:last-child { margin-bottom: 0; }
+.footnotes-bar a {
+  color: var(--blue);
+  text-decoration: underline;
+  word-break: break-all;
+}
+
+/* ─── LIGHTBOX ─── */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.88);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  cursor: zoom-out;
+}
+.lightbox.open { display: flex; }
+.lightbox img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  cursor: default;
+  display: block;
+}
+.lightbox-close {
+  position: fixed;
+  top: 20px;
+  right: 28px;
+  color: #fff;
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 8px;
+  z-index: 10000;
+}
+.lightbox-close:hover { color: var(--light-blue); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 960px) {
+  .site-nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: block; }
+
+  .hero {
+    grid-template-columns: 1fr;
+    height: auto;
+    max-height: none;
+  }
+  .hero-image { height: 240px; min-height: 240px; }
+  .hero-copy { padding: 32px 24px 36px; }
+  .hero-mask { display: none; }
+  .hero h1 { font-size: 24px; }
+
+  .section-wrap { padding: 0 24px; }
+
+  .platform { padding: 56px 0 40px; }
+  .platform-grid { grid-template-columns: 1fr; }
+
+  .creds-bar-note { display: none; }
+
+  .ddpcr { padding: 56px 0; }
+  .ddpcr-stats {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .ddpcr-stat {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--gray-light);
+  }
+  .ddpcr-stat:last-child { border-bottom: none; }
+  .ddpcr-grid { grid-template-columns: 1fr; gap: 40px; }
+
+  .ngs { padding: 56px 0; }
+  .ngs-grid { grid-template-columns: 1fr; gap: 32px; }
+
+  .proto { padding: 56px 0; }
+  .proto-grid { grid-template-columns: 1fr; }
+  .proto-card:first-child { border-radius: 6px 6px 0 0; }
+  .proto-card:last-child { border-radius: 0 0 6px 6px; }
+
+  .cta { padding: 56px 0; }
+  .cta-inner { flex-direction: column; align-items: flex-start; gap: 32px; }
+}
+
+@media (max-width: 560px) {
+  .hero h1 { font-size: 20px; }
+  .platform-header h2,
+  .ddpcr-header h2 { font-size: 26px; }
+  .ngs-left h2,
+  .proto-header h2,
+  .cta-text h2 { font-size: 24px; }
+  .ddpcr-stat-num { font-size: 36px; }
+  .ddpcr-stat-num .denom,
+  .ddpcr-stat-num .unit { font-size: 18px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV (unchanged from v3) -->
+<nav class="site-nav">
+  <a href="https://www.biodesix.com/" class="nav-logo">
+    <img src="https://www.biodesix.com/images/nav/bdx-logo.svg" alt="Biodesix"
+      onerror="this.style.display='none';this.nextSibling.style.display='inline'">
+    <span style="display:none;font-size:20px;font-weight:700;color:#004C97;font-family:'Open Sans',sans-serif;">biodesix</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="https://www.biodesix.com/patient">Patient</a></li>
+    <li><a href="#">Providers</a></li>
+    <li><a href="https://www.biodesix.com/services/development-services-overview" class="active">Services</a></li>
+    <li><a href="https://investors.biodesix.com/">Investors</a></li>
+    <li><a href="https://www.biodesix.com/company">About</a></li>
+    <li><a href="https://www.biodesix.com/contact" class="nav-contact">Contact</a></li>
+  </ul>
+  <div class="nav-hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO (v3 split layout — text wrapping fixed) -->
+<section class="hero">
+  <div class="hero-image">
+    <img
+      src="https://www.biodesix.com/_next/image?url=https%3A%2F%2Fcms.biodesix.com%2Fwp-content%2Fuploads%2F2025%2F02%2FBiodesix-ddPCD-Machines_Edit_B.jpg&w=1340&q=50"
+      alt="Biodesix laboratory — ddPCR machines"
+      onerror="this.style.background:'#274868';this.removeAttribute('src');">
+    <svg class="hero-mask" xmlns="http://www.w3.org/2000/svg" version="1.1"
+      viewBox="0 0 165.1 594" preserveAspectRatio="none">
+      <path fill="#fff" d="M0,0c.4,0,.8,0,1.2,0H0Z"></path>
+      <path fill="#fff" d="M165.1,0H1.2c48.7,0,88.1,39.4,88.1,88.1v438c0,41.9,34,67.9,75.9,67.9h0V0Z"></path>
+    </svg>
+  </div>
+  <div class="hero-copy">
+    <p class="hero-eyebrow">Biopharma Services</p>
+    <h1>
+      Accelerating Therapeutic Discovery
+      &amp; Clinical Development
+    </h1>
+    <p class="hero-sub">
+      Biodesix delivers multi-omic molecular insights to help biopharmaceutical partners answer the most complex scientific questions — from early discovery through regulatory approval.
+    </p>
+    <a href="https://www.biodesix.com/contact" class="btn-green">Connect With Our Team</a>
+  </div>
+</section>
+
+
+<!-- ─── 1. PLATFORM SNAPSHOT ─── -->
+<section class="platform">
+  <div class="section-wrap">
+    <div class="platform-header">
+      <div class="section-eyebrow">What We Do</div>
+      <h2><strong>Comprehensive</strong> biopharma capabilities</h2>
+    </div>
+    <div class="platform-grid">
+
+      <!-- ddPCR / Genomic — primary (2fr, featured) -->
+      <div class="platform-card featured">
+        <span class="platform-tag">Core platform</span>
+        <h3>Genomic Testing &amp; Monitoring</h3>
+        <p class="card-sub">Longitudinal ctDNA/ctRNA monitoring, clinical trial eligibility, resistance mutation tracking, and MRD assessment via ddPCR™ and NGS.</p>
+        <div class="spec-badges">
+          <span class="spec-badge primary">LOD as low as 0.02%</span>
+          <span class="spec-badge primary">Absolute quantification</span>
+          <span class="spec-badge neutral">Rapid turnaround</span>
+        </div>
+        <ul class="spec-list">
+          <li>KRAS · EGFRm · MSI · MRD · ESR1</li>
+          <li>Pre-validated assays + custom development</li>
+          <li>cfDNA · cfRNA · tissue · cell culture</li>
+          <li>Bio-Rad ddPCR™ + Thermo Fisher NGS</li>
+        </ul>
+        <a href="#ddpcr" class="card-link">Platform details ↓</a>
+      </div>
+
+      <!-- Discovery Proteomics -->
+      <div class="platform-card">
+        <h3>Discovery Proteomics</h3>
+        <p class="card-sub">Unbiased identification and quantification of thousands of protein targets from a single liquid biopsy, tissue, or cell culture sample.</p>
+        <ul class="spec-list">
+          <li>MALDI-TOF mass spectrometry</li>
+          <li>Untargeted LC-MS/MS profiling</li>
+          <li>Protein classifier development</li>
+        </ul>
+      </div>
+
+      <!-- Targeted Proteomics -->
+      <div class="platform-card">
+        <h3>Targeted Proteomics</h3>
+        <p class="card-sub">Absolute quantification of proteins of interest across your program timeline, with a scalable pathway to ELISA.</p>
+        <ul class="spec-list">
+          <li>Targeted LC-MS/MS</li>
+          <li>Biomarker validation &amp; PKPD</li>
+          <li>ELISA transfer pathway</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── CREDENTIALS BAR ─── -->
+<div class="creds-bar">
+  <div class="section-wrap">
+    <div class="creds-bar-inner">
+      <span class="creds-bar-label">Lab certifications</span>
+      <span class="cert">CAP Accredited</span>
+      <span class="cert">CLIA Certified</span>
+      <span class="cert">NYS CLEP</span>
+      <span class="cert">ISO 13485</span>
+      <span class="cert">FDA Registered Mfg.</span>
+      <span class="creds-bar-note">Two U.S.-based labs</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ─── 2. ddPCR DEEP DIVE ─── -->
+<section class="ddpcr" id="ddpcr">
+  <div class="section-wrap">
+
+    <div class="ddpcr-header">
+      <div class="section-eyebrow">ddPCR™ Genomic Platform</div>
+      <h2><strong>Fast run.</strong> Rigorous review. <strong>Trusted data.</strong></h2>
+      <p>Biodesix is deeply experienced in Droplet Digital™ PCR through a standing relationship with Bio-Rad Laboratories. ddPCR delivers ultra-low limit of detection, full quantification abilities, and a rapid run time — with every result verified through post-run data review before delivery.<sup>2</sup></p>
+    </div>
+
+    <!-- Stats row -->
+    <div class="ddpcr-stats">
+      <div class="ddpcr-stat">
+        <div class="ddpcr-stat-num">0.02<span class="unit">%</span></div>
+        <div class="ddpcr-stat-label">Limit of detection — overcome noise and low sample volume challenges</div>
+      </div>
+      <div class="ddpcr-stat">
+        <div class="ddpcr-stat-num">8<span class="denom">/10</span></div>
+        <div class="ddpcr-stat-label">Top global pharma companies collaborate with Biodesix<sup>1</sup></div>
+      </div>
+      <div class="ddpcr-stat">
+        <div class="ddpcr-stat-num">5</div>
+        <div class="ddpcr-stat-label">On-market, Medicare-covered clinical diagnostic tests — our quality standards are proven in commercial deployment</div>
+      </div>
+    </div>
+
+    <!-- Assays + figure -->
+    <div class="ddpcr-grid">
+
+      <!-- Left: assay menu, sample types, use cases, TAT note -->
+      <div class="ddpcr-col">
+        <h3>Pre-validated assay menu</h3>
+        <div class="ddpcr-rule"></div>
+        <p>Many assays are pre-validated and readily available. For targets not on the shelf, Biodesix facilitates custom development and validation.</p>
+        <ul class="spec-list">
+          <li>MSI (microsatellite instability)</li>
+          <li>MRD (minimal residual disease)</li>
+          <li>KRAS — G12C, G12D, G12V</li>
+          <li>ESR1</li>
+          <li>EGFRm</li>
+          <li>Custom assay development &amp; validation</li>
+        </ul>
+
+        <div class="subsection-label">Sample types</div>
+        <div class="sample-chips">
+          <span class="sample-chip">cfDNA</span>
+          <span class="sample-chip">cfRNA</span>
+          <span class="sample-chip">Tissue</span>
+          <span class="sample-chip">Cell culture</span>
+        </div>
+
+        <div class="subsection-label">Use cases</div>
+        <ul class="use-list">
+          <li>Clinical trial enrollment eligibility</li>
+          <li>Therapeutic dosage optimization</li>
+          <li>Efficacy endpoint measurement (cfDNA/cfRNA clearance)</li>
+          <li>Resistance mutation monitoring</li>
+          <li>MRD monitoring</li>
+        </ul>
+
+        <div class="tat-note">
+          <p><strong>On turnaround time:</strong> ddPCR run times are rapid. Every result goes through post-run data verification before delivery — timeline varies by project scope and assay type. <a href="https://www.biodesix.com/contact" style="color:var(--blue);font-weight:700;">Ask our team</a> for a project-specific estimate.</p>
+        </div>
+      </div>
+
+      <!-- Right: published figure + PDF link -->
+      <div class="ddpcr-col">
+        <h3>Published evidence</h3>
+        <div class="ddpcr-rule"></div>
+        <div class="panel-img-wrap" onclick="openLightbox('https://cms.biodesix.com/wp-content/uploads/2025/07/LeadtimefromctDNAPDtoFST_biopharma.png')">
+          <img
+            src="https://cms.biodesix.com/wp-content/uploads/2025/07/LeadtimefromctDNAPDtoFST_biopharma.png"
+            alt="Lead time from ctDNA PD to FST — EGFRm advanced NSCLC"
+            loading="lazy">
+          <span class="panel-img-zoom">View full size</span>
+        </div>
+        <p class="citation">
+          Gray JE et al. Longitudinal analyses of circulating tumor DNA for detection of EGFRm advanced NSCLC progression.
+          <em>J Thorac Oncol.</em> 2024;19(11):1525–1538.
+          <a href="https://www.jto.org/article/S1556-0864(24)00676-2/fulltext" target="_blank">Read the paper →</a>
+        </p>
+        <p style="font-size:11px;color:var(--gray-text);margin-top:6px;line-height:1.5;">Image used under Open Access. Credit: Gray et al., <em>J Thorac Oncol.</em> 2024.</p>
+
+        <div style="margin-top:32px;padding-top:24px;border-top:1px solid var(--gray-light);">
+          <p style="font-size:13px;color:var(--gray-text);line-height:1.65;margin-bottom:14px;">For a full view of our genomic assay offerings, see our platform capabilities overview.</p>
+          <a href="https://cms.biodesix.com/wp-content/uploads/2025/05/BioDSX0039_v2_Genomic-Profiling-Platform-Capabilities-PDF.pdf"
+            target="_blank"
+            class="btn-green"
+            style="font-size:12px;padding:11px 22px;">
+            Download Capabilities PDF
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── 3. NGS ─── -->
+<section class="ngs" id="ngs">
+  <div class="section-wrap">
+    <div class="ngs-grid">
+
+      <div class="ngs-left">
+        <div class="section-eyebrow">Next-Generation Sequencing</div>
+        <h2>Industry-leading speed via a <strong>fully integrated workflow</strong></h2>
+        <p>NGS at Biodesix is powered by a strong partnership with Thermo Fisher Scientific. A fully integrated workflow delivers competitive turnaround times for targeted genomic profiling across your program.</p>
+        <p style="margin-top:10px;">For target assays that are not off-the-shelf, Biodesix facilitates custom NGS assay development and validation. <a href="https://www.biodesix.com/contact" style="color:var(--blue);font-weight:700;text-decoration:underline;">Contact our team</a> to discuss how NGS can support your project.</p>
+      </div>
+
+      <div class="ngs-right" style="padding-top:4px;">
+        <div class="partner-tag">
+          <span class="partner-dot"></span>
+          Platform partner: Thermo Fisher Scientific
+        </div>
+        <ul class="spec-list" style="background:var(--white);border-radius:6px;border:1px solid var(--gray-light);overflow:hidden;">
+          <li>Targeted panel sequencing</li>
+          <li>Custom assay development &amp; validation</li>
+          <li>Fully integrated sample-to-report workflow</li>
+          <li>cfDNA · cfRNA · tissue · cell culture</li>
+        </ul>
+        <p style="font-size:13px;color:var(--gray-text);margin-top:14px;line-height:1.6;">
+          For complete genomic profiling platform details, see our
+          <a href="https://cms.biodesix.com/wp-content/uploads/2025/05/BioDSX0039_v2_Genomic-Profiling-Platform-Capabilities-PDF.pdf"
+            target="_blank"
+            style="color:var(--blue);font-weight:700;text-decoration:underline;">capabilities overview PDF</a>.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── 4. PROTEOMICS ─── -->
+<section class="proto" id="proteomics">
+  <div class="section-wrap">
+    <div class="proto-header">
+      <div class="section-eyebrow">Proteomics</div>
+      <h2>Expanding our <strong>multi-omic platform</strong></h2>
+      <p>Comprehensive proteomic capabilities complement our genomic platform, enabling a more complete molecular picture from your samples — from exploratory biomarker discovery through absolute quantification of specific proteins of interest.</p>
+    </div>
+    <div class="proto-grid">
+
+      <div class="proto-card">
+        <h3>Discovery Proteomics</h3>
+        <div class="proto-rule"></div>
+        <p>Gather comprehensive proteomic insights from biological samples. Characterize protein-protein interactions, post-translational modifications, and differential protein expression to drive biomarker discovery and classifier development.</p>
+        <p>MALDI-TOF MS provides a window into the plasma proteome. Untargeted LC-MS/MS enables unbiased identification and quantification of thousands of targets in a single liquid biopsy, tissue, or cell culture sample.</p>
+        <ul class="spec-list">
+          <li>MALDI-TOF mass spectrometry</li>
+          <li>Untargeted LC-MS/MS profiling</li>
+          <li>Protein-based classifier development</li>
+          <li>Next-generation spatial omics</li>
+          <li>Liquid biopsy, tissue &amp; cell culture</li>
+        </ul>
+      </div>
+
+      <div class="proto-card">
+        <h3>Targeted Proteomics</h3>
+        <div class="proto-rule"></div>
+        <p>Evaluate the abundance of proteins associated with your drug's mechanism of action or patient therapeutic response over time, with absolute quantification by targeted LC-MS/MS.</p>
+        <p>Assays are readily transferable to ELISA format for scalability and cost-effectiveness as your program advances toward larger cohorts.</p>
+        <ul class="spec-list">
+          <li>Biomarker validation studies</li>
+          <li>MRD &amp; drug response monitoring</li>
+          <li>Targeted protein degradation (TPD)</li>
+          <li>PKPD &amp; cell signaling studies</li>
+          <li>Scalable ELISA transfer pathway</li>
+        </ul>
+        <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11504527/" target="_blank" class="proto-link">
+          See Biodesix proteomics in published research →
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── 5. CTA ─── -->
+<section class="cta">
+  <div class="section-wrap">
+    <div class="cta-inner">
+      <div class="cta-text">
+        <div class="section-eyebrow">Ready to Partner?</div>
+        <h2><strong>Tell us about</strong><br>your program.</h2>
+        <p>Share your indication, assay needs, and project phase. Our team will connect you with the right expertise and capabilities to move your program forward.</p>
+      </div>
+      <div class="cta-action">
+        <a href="https://www.biodesix.com/contact" class="btn-white">Connect With Our Team</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTNOTES -->
+<div class="footnotes-bar">
+  <div class="section-wrap">
+    <p><sup>1</sup> "The top 20 pharma companies by 2023 revenue;" Fierce Pharma; April 2024. <a href="https://www.fiercepharma.com/pharma/top-20-pharma-companies-2023-revenue" target="_blank">https://www.fiercepharma.com/pharma/top-20-pharma-companies-2023-revenue</a></p>
+    <p><sup>2</sup> Droplet Digital™ and ddPCR™ are trademarks of Bio-Rad Laboratories, Inc.</p>
+  </div>
+</div>
+
+
+<!-- FOOTER (unchanged from v3) -->
+<footer class="Footer_wrapper__O67Gl">
+  <div class="Footer_container__7AGDW">
+    <div class="Footer_bgshadow__YvCGN">
+      <img alt="" loading="lazy" src="https://www.biodesix.com/images/footer/bgshadow.svg">
+    </div>
+    <div class="Footer_topsection__JbYaS">
+      <div class="Footer_logocontainer__MIBRZ">
+        <div>
+          <img alt="Biodesix Logo" loading="lazy" width="190" height="34"
+            src="https://www.biodesix.com/images/footer/bdx-logo.svg"
+            onerror="this.style.display='none'">
+        </div>
+        <div class="text-body-normal Footer_text__zmW1j">
+          <p>The tests on this website have been developed and validated by Biodesix, Inc. and their performance characteristics have been reviewed and approved by the New York State Clinical Evaluation Program (NYS CLEP). They have not yet been cleared nor approved by the US Food and Drug Administration.</p>
+        </div>
+      </div>
+    </div>
+    <div class="Footer_menus__0e6yf">
+      <div class="Footer_menu__TT5EG">
+        <div class="Footer_menutitle__c0Ff6">TESTS</div>
+        <ul>
+          <li><a target="_self" href="https://www.biodesix.com/tests">Tests Overview</a></li>
+          <li><a target="_self" href="https://www.biodesix.com/patient/lung-nodule">Nodify Lung<sup>&reg;</sup> Nodule Risk Assessment</a></li>
+          <li><a target="_self" href="https://www.biodesix.com/tests/iqlung">IQLung<sup>&reg;</sup> Cancer Treatment Guidance</a></li>
+        </ul>
+      </div>
+      <div class="Footer_menu__TT5EG">
+        <div class="Footer_menutitle__c0Ff6">SERVICES</div>
+        <ul>
+          <li><a target="_self" href="https://www.biodesix.com/services/development-services-overview">Services Overview</a></li>
+          <li><a target="_self" href="https://www.biodesix.com/services/biopharma-services">Biopharma Services</a></li>
+          <li><a target="_self" href="https://www.biodesix.com/services/life-sciences">Life Sciences Services</a></li>
+        </ul>
+      </div>
+      <div class="Footer_menu__TT5EG">
+        <div class="Footer_menutitle__c0Ff6">RESOURCES</div>
+        <ul>
+          <li><a target="_blank" href="https://portal.biodesix.com/CommunitiesLogin">Physician Portal</a></li>
+          <li><a target="_blank" href="https://nodulerisk.biodesix.com/">Nodule Risk Calculator</a></li>
+          <li><a target="_self" href="https://www.biodesix.com/resources/publications">Publications</a></li>
+          <li><a target="_self" href="https://www.biodesix.com/resources/reimbursement">Reimbursement</a></li>
+          <li><a target="_self" href="https://www.biodesix.com/company/labs-certifications">Labs Certifications</a></li>
+        </ul>
+      </div>
+      <div class="Footer_menu__TT5EG">
+        <div class="Footer_menutitle__c0Ff6">ABOUT</div>
+        <ul>
+          <li><a target="_self" href="https://www.biodesix.com/company">Company</a></li>
+          <li><a target="_self" href="https://www.biodesix.com/careers/working-at-biodesix">Careers</a></li>
+          <li><a target="_self" href="https://www.biodesix.com/newsroom">Newsroom</a></li>
+          <li><a target="_blank" href="https://investors.biodesix.com/">Investors</a></li>
+        </ul>
+      </div>
+      <div class="Footer_social__cW3W3">
+        <div class="Footer_buttoncontainer__kX952">
+          <a class="Footer_button__h61b6" href="https://www.biodesix.com/contact">Contact Us</a>
+        </div>
+        <div class="Footer_socialicons__cpdtd">
+          <div class="Footer_item__s4bQH">
+            <a target="_blank" href="https://www.linkedin.com/company/biodesix-inc-/">
+              <img alt="LinkedIn Logo" loading="lazy" width="42" height="42"
+                src="https://www.biodesix.com/images/footer/linkedinlogo.svg"
+                onerror="this.style.display='none'">
+            </a>
+          </div>
+          <div class="Footer_item__s4bQH">
+            <a target="_blank" href="https://www.youtube.com/@biodesix">
+              <img alt="Youtube Logo" loading="lazy" width="42" height="42"
+                src="https://www.biodesix.com/images/footer/youtubelogo.svg"
+                onerror="this.style.display='none'">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="Footer_copyrightframe__8pDu5">
+    <div class="Footer_container__7AGDW">
+      <div class="Footer_bottmnu__auOcB">
+        <ul class="Footer_menu__TT5EG">
+          <li><a href="https://www.biodesix.com/privacy-policy-hipaa/" target="_self">Privacy Policy &amp; HIPAA</a></li>
+          <li><a href="https://cms.biodesix.com/wp-content/uploads/2025/02/23.02.13-Biodesix-Terms-Conditions-CLEAN10758477.1.pdf" target="_blank" rel="noopener noreferrer">Terms &amp; Conditions</a></li>
+          <li><a href="https://www.biodesix.com/gdpr/" target="_self">GDPR Notice</a></li>
+          <li><a href="https://cms.biodesix.com/wp-content/uploads/2025/02/BioDSX0011_v1.0_Your-Rights-and-Protections-Against-Surprise-Medical-Bills.pdf" target="_blank" rel="noopener noreferrer">No Surprises Act</a></li>
+        </ul>
+      </div>
+      <div class="Footer_copyright__1ODhL">&copy;2025 Biodesix. All Rights Reserved</div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(e) {
+  if (!e || e.target !== document.getElementById('lightbox-img')) {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
+</script>
+
+</body>
+</html>
