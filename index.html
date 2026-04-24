@@ -35,7 +35,7 @@ body {
 
 a { color: inherit; text-decoration: none; }
 
-/* ─── NAV (unchanged from v3) ─── */
+/* ─── NAV ─── */
 .site-nav {
   position: sticky;
   top: 0;
@@ -82,7 +82,7 @@ a { color: inherit; text-decoration: none; }
 .nav-hamburger { display: none; cursor: pointer; padding: 4px; margin-left: auto; }
 .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--blue); margin: 5px 0; border-radius: 2px; }
 
-/* ─── HERO (v3 layout — wrapping fixed) ─── */
+/* ─── HERO ─── */
 .hero {
   display: grid;
   grid-template-columns: 58% 42%;
@@ -112,7 +112,6 @@ a { color: inherit; text-decoration: none; }
   pointer-events: none;
   z-index: 2;
 }
-/* FIX: reduced padding, smaller h1, overflow guards */
 .hero-copy {
   background: var(--white);
   display: flex;
@@ -366,13 +365,6 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.25;
 }
 .ddpcr-header h2 strong { font-weight: 700; }
-.ddpcr-header p {
-  font-size: 15px;
-  color: var(--gray-text);
-  line-height: 1.75;
-  margin-top: 14px;
-  max-width: 700px;
-}
 .ddpcr-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -453,27 +445,6 @@ a { color: inherit; text-decoration: none; }
   padding: 4px 12px;
   border-radius: 20px;
 }
-.use-list { list-style: none; }
-.use-list li {
-  font-size: 13px;
-  color: var(--gray-text);
-  padding: 7px 0 7px 16px;
-  position: relative;
-  border-bottom: 1px solid var(--gray-light);
-  line-height: 1.5;
-}
-.use-list li:first-child { border-top: 1px solid var(--gray-light); }
-.use-list li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--green);
-}
 .tat-note {
   background: var(--off-white);
   border-left: 3px solid var(--blue);
@@ -526,53 +497,54 @@ a { color: inherit; text-decoration: none; }
   pointer-events: none;
 }
 
-/* ─── NGS ─── */
-.ngs { padding: 72px 0; background: var(--off-white); }
-.ngs-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: start;
-}
-.ngs-left h2 {
-  font-size: 28px;
-  font-weight: 300;
-  color: var(--blue);
-  margin-top: 8px;
-  line-height: 1.25;
-}
-.ngs-left h2 strong { font-weight: 700; }
-.ngs-left p {
-  font-size: 14px;
-  color: var(--gray-text);
-  line-height: 1.75;
-  margin-top: 14px;
-}
-.partner-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 10px;
+/* ─── EVIDENCE TOGGLE (mobile collapsible) ─── */
+.evidence-details > summary {
+  list-style: none;
+  cursor: default;
+  pointer-events: none;
+  font-size: 18px;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--blue-mid);
-  background: var(--white);
-  border: 1px solid var(--gray-light);
-  padding: 5px 14px;
-  border-radius: 3px;
-  margin-bottom: 14px;
+  color: var(--blue);
+  margin-bottom: 4px;
+  display: block;
 }
-.partner-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--blue);
-  flex-shrink: 0;
+.evidence-details > summary::-webkit-details-marker { display: none; }
+.evidence-details > .ddpcr-rule { margin-top: 12px; }
+
+@media (max-width: 960px) {
+  .evidence-details > summary {
+    cursor: pointer;
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--blue);
+    padding: 14px 0;
+    border-top: 1px solid var(--gray-light);
+    border-bottom: 1px solid var(--gray-light);
+    margin-bottom: 0;
+    user-select: none;
+  }
+  .evidence-details > summary::after {
+    content: '+';
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--gray-text);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .evidence-details[open] > summary::after { content: '−'; }
+  .evidence-details > .ddpcr-rule { display: none; }
+  .evidence-details[open] > .ddpcr-rule {
+    display: block;
+    margin-top: 16px;
+  }
 }
 
 /* ─── PROTEOMICS ─── */
-.proto { padding: 72px 0; background: var(--white); }
+.proto { padding: 72px 0; background: var(--off-white); }
 .proto-header { margin-bottom: 36px; max-width: 660px; }
 .proto-header h2 {
   font-size: 28px;
@@ -614,19 +586,13 @@ a { color: inherit; text-decoration: none; }
   background: var(--green);
   margin: 12px 0 14px;
 }
-.proto-card p {
-  font-size: 14px;
-  color: var(--gray-text);
-  line-height: 1.7;
-  margin-bottom: 14px;
-}
 .proto-link {
   display: inline-block;
   font-size: 12px;
   font-weight: 700;
   color: var(--blue);
   text-decoration: underline;
-  margin-top: 8px;
+  margin-top: 14px;
 }
 
 /* ─── CTA ─── */
@@ -764,9 +730,6 @@ a { color: inherit; text-decoration: none; }
   .ddpcr-stat:last-child { border-bottom: none; }
   .ddpcr-grid { grid-template-columns: 1fr; gap: 40px; }
 
-  .ngs { padding: 56px 0; }
-  .ngs-grid { grid-template-columns: 1fr; gap: 32px; }
-
   .proto { padding: 56px 0; }
   .proto-grid { grid-template-columns: 1fr; }
   .proto-card:first-child { border-radius: 6px 6px 0 0; }
@@ -780,7 +743,6 @@ a { color: inherit; text-decoration: none; }
   .hero h1 { font-size: 20px; }
   .platform-header h2,
   .ddpcr-header h2 { font-size: 26px; }
-  .ngs-left h2,
   .proto-header h2,
   .cta-text h2 { font-size: 24px; }
   .ddpcr-stat-num { font-size: 36px; }
@@ -791,7 +753,7 @@ a { color: inherit; text-decoration: none; }
 </head>
 <body>
 
-<!-- NAV (unchanged from v3) -->
+<!-- NAV -->
 <nav class="site-nav">
   <a href="https://www.biodesix.com/" class="nav-logo">
     <img src="https://www.biodesix.com/images/nav/bdx-logo.svg" alt="Biodesix"
@@ -811,13 +773,13 @@ a { color: inherit; text-decoration: none; }
   </div>
 </nav>
 
-<!-- HERO (v3 split layout — text wrapping fixed) -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-image">
     <img
       src="https://www.biodesix.com/_next/image?url=https%3A%2F%2Fcms.biodesix.com%2Fwp-content%2Fuploads%2F2025%2F02%2FBiodesix-ddPCD-Machines_Edit_B.jpg&w=1340&q=50"
       alt="Biodesix laboratory — ddPCR machines"
-      onerror="this.style.background:'#274868';this.removeAttribute('src');">
+      onerror="this.style.background='#274868';this.removeAttribute('src');">
     <svg class="hero-mask" xmlns="http://www.w3.org/2000/svg" version="1.1"
       viewBox="0 0 165.1 594" preserveAspectRatio="none">
       <path fill="#fff" d="M0,0c.4,0,.8,0,1.2,0H0Z"></path>
@@ -847,7 +809,7 @@ a { color: inherit; text-decoration: none; }
     </div>
     <div class="platform-grid">
 
-      <!-- ddPCR / Genomic — primary (2fr, featured) -->
+      <!-- ddPCR — primary (2fr, featured) -->
       <div class="platform-card featured">
         <span class="platform-tag">Core platform</span>
         <h3>Genomic Testing &amp; Monitoring</h3>
@@ -866,26 +828,28 @@ a { color: inherit; text-decoration: none; }
         <a href="#ddpcr" class="card-link">Platform details ↓</a>
       </div>
 
-      <!-- Discovery Proteomics -->
+      <!-- NGS -->
       <div class="platform-card">
-        <h3>Discovery Proteomics</h3>
-        <p class="card-sub">Unbiased identification and quantification of thousands of protein targets from a single liquid biopsy, tissue, or cell culture sample.</p>
+        <span class="platform-tag">Thermo Fisher partner</span>
+        <h3>Next-Gen Sequencing</h3>
+        <p class="card-sub">Fully integrated, targeted panel sequencing with competitive turnaround. Custom assay development available.</p>
         <ul class="spec-list">
-          <li>MALDI-TOF mass spectrometry</li>
-          <li>Untargeted LC-MS/MS profiling</li>
-          <li>Protein classifier development</li>
+          <li>Targeted panel sequencing</li>
+          <li>Custom assay development &amp; validation</li>
+          <li>cfDNA · cfRNA · tissue · cell culture</li>
         </ul>
       </div>
 
-      <!-- Targeted Proteomics -->
+      <!-- Proteomics -->
       <div class="platform-card">
-        <h3>Targeted Proteomics</h3>
-        <p class="card-sub">Absolute quantification of proteins of interest across your program timeline, with a scalable pathway to ELISA.</p>
+        <h3>Proteomics</h3>
+        <p class="card-sub">Discovery and targeted quantification from liquid biopsy, tissue, or cell culture. Scalable ELISA transfer pathway.</p>
         <ul class="spec-list">
-          <li>Targeted LC-MS/MS</li>
-          <li>Biomarker validation &amp; PKPD</li>
-          <li>ELISA transfer pathway</li>
+          <li>MALDI-TOF · untargeted LC-MS/MS</li>
+          <li>Absolute quantification · targeted LC-MS/MS</li>
+          <li>PKPD · biomarker validation · TPD</li>
         </ul>
+        <a href="#proteomics" class="card-link">Platform details ↓</a>
       </div>
 
     </div>
@@ -915,7 +879,6 @@ a { color: inherit; text-decoration: none; }
     <div class="ddpcr-header">
       <div class="section-eyebrow">ddPCR™ Genomic Platform</div>
       <h2><strong>Fast run.</strong> Rigorous review. <strong>Trusted data.</strong></h2>
-      <p>Biodesix is deeply experienced in Droplet Digital™ PCR through a standing relationship with Bio-Rad Laboratories. ddPCR delivers ultra-low limit of detection, full quantification abilities, and a rapid run time — with every result verified through post-run data review before delivery.<sup>2</sup></p>
     </div>
 
     <!-- Stats row -->
@@ -930,18 +893,17 @@ a { color: inherit; text-decoration: none; }
       </div>
       <div class="ddpcr-stat">
         <div class="ddpcr-stat-num">5</div>
-        <div class="ddpcr-stat-label">On-market, Medicare-covered clinical diagnostic tests — our quality standards are proven in commercial deployment</div>
+        <div class="ddpcr-stat-label">On-market, Medicare-covered clinical diagnostic tests — quality standards proven in commercial deployment</div>
       </div>
     </div>
 
     <!-- Assays + figure -->
     <div class="ddpcr-grid">
 
-      <!-- Left: assay menu, sample types, use cases, TAT note -->
+      <!-- Left: assay menu, sample types, TAT -->
       <div class="ddpcr-col">
         <h3>Pre-validated assay menu</h3>
         <div class="ddpcr-rule"></div>
-        <p>Many assays are pre-validated and readily available. For targets not on the shelf, Biodesix facilitates custom development and validation.</p>
         <ul class="spec-list">
           <li>MSI (microsatellite instability)</li>
           <li>MRD (minimal residual disease)</li>
@@ -959,47 +921,40 @@ a { color: inherit; text-decoration: none; }
           <span class="sample-chip">Cell culture</span>
         </div>
 
-        <div class="subsection-label">Use cases</div>
-        <ul class="use-list">
-          <li>Clinical trial enrollment eligibility</li>
-          <li>Therapeutic dosage optimization</li>
-          <li>Efficacy endpoint measurement (cfDNA/cfRNA clearance)</li>
-          <li>Resistance mutation monitoring</li>
-          <li>MRD monitoring</li>
-        </ul>
-
         <div class="tat-note">
-          <p><strong>On turnaround time:</strong> ddPCR run times are rapid. Every result goes through post-run data verification before delivery — timeline varies by project scope and assay type. <a href="https://www.biodesix.com/contact" style="color:var(--blue);font-weight:700;">Ask our team</a> for a project-specific estimate.</p>
+          <p><strong>Turnaround:</strong> Fast run time. Every result goes through post-run data verification before delivery. <a href="https://www.biodesix.com/contact" style="color:var(--blue);font-weight:700;">Ask our team</a> for a project-specific estimate.</p>
         </div>
       </div>
 
-      <!-- Right: published figure + PDF link -->
+      <!-- Right: published figure + PDF link (mobile collapsible) -->
       <div class="ddpcr-col">
-        <h3>Published evidence</h3>
-        <div class="ddpcr-rule"></div>
-        <div class="panel-img-wrap" onclick="openLightbox('https://cms.biodesix.com/wp-content/uploads/2025/07/LeadtimefromctDNAPDtoFST_biopharma.png')">
-          <img
-            src="https://cms.biodesix.com/wp-content/uploads/2025/07/LeadtimefromctDNAPDtoFST_biopharma.png"
-            alt="Lead time from ctDNA PD to FST — EGFRm advanced NSCLC"
-            loading="lazy">
-          <span class="panel-img-zoom">View full size</span>
-        </div>
-        <p class="citation">
-          Gray JE et al. Longitudinal analyses of circulating tumor DNA for detection of EGFRm advanced NSCLC progression.
-          <em>J Thorac Oncol.</em> 2024;19(11):1525–1538.
-          <a href="https://www.jto.org/article/S1556-0864(24)00676-2/fulltext" target="_blank">Read the paper →</a>
-        </p>
-        <p style="font-size:11px;color:var(--gray-text);margin-top:6px;line-height:1.5;">Image used under Open Access. Credit: Gray et al., <em>J Thorac Oncol.</em> 2024.</p>
+        <details class="evidence-details" open>
+          <summary>Published evidence</summary>
+          <div class="ddpcr-rule"></div>
+          <div class="panel-img-wrap" onclick="openLightbox('https://cms.biodesix.com/wp-content/uploads/2025/07/LeadtimefromctDNAPDtoFST_biopharma.png')">
+            <img
+              src="https://cms.biodesix.com/wp-content/uploads/2025/07/LeadtimefromctDNAPDtoFST_biopharma.png"
+              alt="Lead time from ctDNA PD to FST — EGFRm advanced NSCLC"
+              loading="lazy">
+            <span class="panel-img-zoom">View full size</span>
+          </div>
+          <p class="citation">
+            Gray JE et al. Longitudinal analyses of circulating tumor DNA for detection of EGFRm advanced NSCLC progression.
+            <em>J Thorac Oncol.</em> 2024;19(11):1525–1538.
+            <a href="https://www.jto.org/article/S1556-0864(24)00676-2/fulltext" target="_blank">Read the paper →</a>
+          </p>
+          <p style="font-size:11px;color:var(--gray-text);margin-top:6px;line-height:1.5;">Image used under Open Access. Credit: Gray et al., <em>J Thorac Oncol.</em> 2024.</p>
 
-        <div style="margin-top:32px;padding-top:24px;border-top:1px solid var(--gray-light);">
-          <p style="font-size:13px;color:var(--gray-text);line-height:1.65;margin-bottom:14px;">For a full view of our genomic assay offerings, see our platform capabilities overview.</p>
-          <a href="https://cms.biodesix.com/wp-content/uploads/2025/05/BioDSX0039_v2_Genomic-Profiling-Platform-Capabilities-PDF.pdf"
-            target="_blank"
-            class="btn-green"
-            style="font-size:12px;padding:11px 22px;">
-            Download Capabilities PDF
-          </a>
-        </div>
+          <div style="margin-top:32px;padding-top:24px;border-top:1px solid var(--gray-light);">
+            <p style="font-size:13px;color:var(--gray-text);line-height:1.65;margin-bottom:14px;">For a full view of our genomic assay offerings, see our platform capabilities overview.</p>
+            <a href="https://cms.biodesix.com/wp-content/uploads/2025/05/BioDSX0039_v2_Genomic-Profiling-Platform-Capabilities-PDF.pdf"
+              target="_blank"
+              class="btn-green"
+              style="font-size:12px;padding:11px 22px;">
+              Download Capabilities PDF
+            </a>
+          </div>
+        </details>
       </div>
 
     </div>
@@ -1007,62 +962,23 @@ a { color: inherit; text-decoration: none; }
 </section>
 
 
-<!-- ─── 3. NGS ─── -->
-<section class="ngs" id="ngs">
-  <div class="section-wrap">
-    <div class="ngs-grid">
-
-      <div class="ngs-left">
-        <div class="section-eyebrow">Next-Generation Sequencing</div>
-        <h2>Industry-leading speed via a <strong>fully integrated workflow</strong></h2>
-        <p>NGS at Biodesix is powered by a strong partnership with Thermo Fisher Scientific. A fully integrated workflow delivers competitive turnaround times for targeted genomic profiling across your program.</p>
-        <p style="margin-top:10px;">For target assays that are not off-the-shelf, Biodesix facilitates custom NGS assay development and validation. <a href="https://www.biodesix.com/contact" style="color:var(--blue);font-weight:700;text-decoration:underline;">Contact our team</a> to discuss how NGS can support your project.</p>
-      </div>
-
-      <div class="ngs-right" style="padding-top:4px;">
-        <div class="partner-tag">
-          <span class="partner-dot"></span>
-          Platform partner: Thermo Fisher Scientific
-        </div>
-        <ul class="spec-list" style="background:var(--white);border-radius:6px;border:1px solid var(--gray-light);overflow:hidden;">
-          <li>Targeted panel sequencing</li>
-          <li>Custom assay development &amp; validation</li>
-          <li>Fully integrated sample-to-report workflow</li>
-          <li>cfDNA · cfRNA · tissue · cell culture</li>
-        </ul>
-        <p style="font-size:13px;color:var(--gray-text);margin-top:14px;line-height:1.6;">
-          For complete genomic profiling platform details, see our
-          <a href="https://cms.biodesix.com/wp-content/uploads/2025/05/BioDSX0039_v2_Genomic-Profiling-Platform-Capabilities-PDF.pdf"
-            target="_blank"
-            style="color:var(--blue);font-weight:700;text-decoration:underline;">capabilities overview PDF</a>.
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- ─── 4. PROTEOMICS ─── -->
+<!-- ─── 3. PROTEOMICS ─── -->
 <section class="proto" id="proteomics">
   <div class="section-wrap">
     <div class="proto-header">
       <div class="section-eyebrow">Proteomics</div>
       <h2>Expanding our <strong>multi-omic platform</strong></h2>
-      <p>Comprehensive proteomic capabilities complement our genomic platform, enabling a more complete molecular picture from your samples — from exploratory biomarker discovery through absolute quantification of specific proteins of interest.</p>
     </div>
     <div class="proto-grid">
 
       <div class="proto-card">
         <h3>Discovery Proteomics</h3>
         <div class="proto-rule"></div>
-        <p>Gather comprehensive proteomic insights from biological samples. Characterize protein-protein interactions, post-translational modifications, and differential protein expression to drive biomarker discovery and classifier development.</p>
-        <p>MALDI-TOF MS provides a window into the plasma proteome. Untargeted LC-MS/MS enables unbiased identification and quantification of thousands of targets in a single liquid biopsy, tissue, or cell culture sample.</p>
         <ul class="spec-list">
           <li>MALDI-TOF mass spectrometry</li>
           <li>Untargeted LC-MS/MS profiling</li>
           <li>Protein-based classifier development</li>
-          <li>Next-generation spatial omics</li>
+          <li>Spatial omics</li>
           <li>Liquid biopsy, tissue &amp; cell culture</li>
         </ul>
       </div>
@@ -1070,8 +986,6 @@ a { color: inherit; text-decoration: none; }
       <div class="proto-card">
         <h3>Targeted Proteomics</h3>
         <div class="proto-rule"></div>
-        <p>Evaluate the abundance of proteins associated with your drug's mechanism of action or patient therapeutic response over time, with absolute quantification by targeted LC-MS/MS.</p>
-        <p>Assays are readily transferable to ELISA format for scalability and cost-effectiveness as your program advances toward larger cohorts.</p>
         <ul class="spec-list">
           <li>Biomarker validation studies</li>
           <li>MRD &amp; drug response monitoring</li>
@@ -1089,7 +1003,7 @@ a { color: inherit; text-decoration: none; }
 </section>
 
 
-<!-- ─── 5. CTA ─── -->
+<!-- ─── 4. CTA ─── -->
 <section class="cta">
   <div class="section-wrap">
     <div class="cta-inner">
@@ -1115,7 +1029,7 @@ a { color: inherit; text-decoration: none; }
 </div>
 
 
-<!-- FOOTER (unchanged from v3) -->
+<!-- FOOTER -->
 <footer class="Footer_wrapper__O67Gl">
   <div class="Footer_container__7AGDW">
     <div class="Footer_bgshadow__YvCGN">
@@ -1229,6 +1143,14 @@ function closeLightbox(e) {
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeLightbox();
 });
+
+// Collapse evidence section by default on mobile
+(function() {
+  var d = document.querySelector('.evidence-details');
+  if (d && window.innerWidth <= 960) {
+    d.removeAttribute('open');
+  }
+})();
 </script>
 
 </body>
